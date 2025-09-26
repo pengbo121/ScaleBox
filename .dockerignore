@@ -169,17 +169,13 @@ output/
 # cmake
 archive
 lib
+bin
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
 detect_cuda_version.cc
 
-# custom files
-debug/
-
 runtime/lean/.lake/
 
-server/*.txt
-server/*.conf
-
-supervisor/logfile
+debug/
+.docs/
