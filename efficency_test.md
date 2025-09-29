@@ -21,7 +21,7 @@ We evaluated the performance of our sandbox API against prime_code local evaluat
 
 ## Performance Results
 
-Our results demonstrate that the sandbox API achieves a **14.57% performance improvement** over the baseline and **36.31% performance improvement** over the `run_code` API. Compared with `run_code` API which send each unit test seperately, our `common_evaluate_batch` API pack the whole test cases, and is more efficent. Our sandbox also scales linearly across multiple nodes. With two sandbox nodes, we achieved a **38.29% reduction** in evaluation time. 
+Our results demonstrate that the sandbox API achieves a **14.57% performance improvement** over the baseline and **36.31% performance improvement** over the original `run_code` API from SandboxFusion. Compared with `run_code` API which send each unit test seperately, our `common_evaluate_batch` API pack the whole test cases, and is more efficent. Our sandbox also scales linearly across multiple nodes. With two sandbox nodes, we achieved a **38.29% reduction** in evaluation time. 
 
 ### 2048 Cases
 

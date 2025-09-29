@@ -1,13 +1,16 @@
 # ScaleBox
 
-<p align="center"><img src="logo.png" alt="ICIP Sandbox Logo" width="200"></p>
+<!-- <p align="center"><img src="logo.png" alt="ICIP Sandbox Logo" width="200"></p> -->
 
-⚡ A scalable sandbox for distributed code execution, RL training and unified benchmarking | 🛡️ Secure | 🌐 Multi-language | 🔥 Fast
+![logo](logo.png)
+
+⚡ A scalable sandbox for distributed code execution, RL training and unified benchmarking | 🛡️ Distributed | 🌐 Multi-language | 🔥 Efficient
 
 ## 📋 Table of Contents
 - [✨ Highlights](#highlights)
 - [🎯 Features](#features)
-- [🚀 Usage](#usage)
+- [🚀 Sandbox Usage](#usage)
+- [✏️ Unified Evaluation](#eval)
 - [📝 Citation](#citation)
 - [🙏 Acknowledgement](#acknowledgement)
 - [📄 License](#license)
@@ -72,24 +75,6 @@ Supported languages:
 - Verilog
 - CUDA (GPU)
 - Python (GPU)
-
-Jupyter mode kernels:
-
-- python3
-
-**Online Judge**: Implementation of Evaluation & RL datasets that requires code running
-
-- [HumanEval](https://github.com/openai/human-eval)
-- [MultiPL-E HumanEval](https://github.com/nuprl/MultiPL-E)
-- [Shadow Humaneval](https://huggingface.co/datasets/Miaosen/openai-humaneval-sky-shadow)
-- [CodeContests](https://github.com/google-deepmind/code_contests)
-- [MBPP](https://github.com/google-research/google-research/tree/master/mbpp)
-- [MBXP](https://github.com/amazon-science/mxeval)
-- [MHPP](https://github.com/SparksofAGI/MHPP)
-- [CRUXEval](https://github.com/facebookresearch/cruxeval)
-- [NaturalCodeBench](https://github.com/THUDM/NaturalCodeBench)
-- [PAL-Math](https://github.com/deepseek-ai/DeepSeek-Coder/tree/main/Evaluation/PAL-Math)
-- [verilog-eval](https://github.com/NVlabs/verilog-eval)
 
 **Unified Evaluation**: A unified evaluation interface for code generation tasks, including stdio and function call evaluation modes on various languages
 
@@ -174,7 +159,7 @@ docker run \
 ```
 
 ### 🔌 Calling the sandbox
-In additioon to the originally provided dataset-specific evaluation APIs, we also provide a unified evaluation API, which includes both stdio and function call evaluation modes on various languages.
+In addition to the originally provided dataset-specific evaluation APIs, we also provide a unified evaluation API, which includes both stdio and function call evaluation modes on various languages.
 The description of API parameters are as follows:
 
 - completion: The code to be evaluated, in the form of markdown code block.
@@ -647,7 +632,7 @@ Then, add the following to your MCP client:
 }
 ```
 
-## 🧪 Sandbox Eval
+## ✏️ Unified Evaluation
 
 An evaluation framework that uses the sandbox within this codebase for assessment.
 
