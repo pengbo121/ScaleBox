@@ -9,8 +9,8 @@
 ## 📋 Table of Contents
 - [✨ Highlights](#highlights)
 - [🎯 Features](#features)
-- [🚀 Sandbox Usage](#usage)
-- [✏️ Unified Evaluation](#eval)
+- [🚀 Sandbox Usage](#sandbox-usage)
+- [✏️ Unified Evaluation](#unified-evaluation)
 - [📝 Citation](#citation)
 - [🙏 Acknowledgement](#acknowledgement)
 - [📄 License](#license)
