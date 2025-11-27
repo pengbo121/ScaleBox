@@ -11,6 +11,7 @@
 - [🎯 Features](#features)
 - [🚀 Sandbox Usage](#sandbox-usage)
 - [✏️ Unified Evaluation](#unified-evaluation)
+- [🧪 Special Judge Generation](#special-judge-generation)
 - [📝 Citation](#citation)
 - [🙏 Acknowledgement](#acknowledgement)
 - [📄 License](#license)
@@ -42,6 +43,11 @@
 - **Simple-to-use evaluation for common code benchmarks**
   - Easy-to-use: One-click evaluation of multiple models and benchmarks by simply modifying configuration files
   - Highly Efficiency: Support for high-efficiency distributed inference and evaluation for both instruct and reasoning models
+
+### Special Judge Generation
+- **Lightweight pipeline for special judge generation**
+  - More precise reward assignment: Providing custom checker for problems with multiple valid solutions or floating-point tolerance, which stdout comparison may fail to evaluate correctly
+  - Automatic construction: One-click classification of problems requiring special judges and generation of corresponding judge programs
 
 ### Sandbox Usability
 - Parameter configuration
@@ -674,6 +680,56 @@ Note, MBPP and MBPP+, HumanEval and HumanEval+ only use different datasets, to e
 |-------|---------------|
 | Qwen2.5-1.5B-Distill | 16.13 |
 | Qwen3-4B | 52.41 |
+
+## 🧪 Special Judge Generation
+
+Some programming problems require a “special judge” (custom checker) instead of exact-match outputs. This repo provides a lightweight pipeline to:
+
+- Automatically classify which problems need a special judge, summarizing categories like multiple valid solutions or floating-point tolerance
+- Generate Python judge programs tailored to each problem, and filter with gold reference solutions and empty submissions to ensure correctness
+
+Quick start (requires an OpenAI-compatible model API and a running sandbox):
+
+```bash
+cd special_judge
+
+# 1) Classify problems for special-judge need
+python3 special_judge/classify.py \
+    --api_key $API_KEY \
+    --base_url https://api.deepseek.com \
+    --model deepseek-chat \
+    --data_path PrimeIntellect/verifiable-coding-problems \
+    --split train \
+    --text_field prompt \
+    --id_field problem_id \
+    --output_path data/classified_deepseek-chat.jsonl \
+    --batch_size 16 --resume
+
+# 2) Filter and summarize the classification results
+python3 special_judge/filter_special_judge.py \
+    --input data/classified_deepseek-chat.jsonl \
+    --output-jsonl data/require_special_judge.jsonl \
+    --output-ids data/require_special_judge_ids.json
+
+# 3) Generate custom judge programs and evaluate via sandbox
+#    Provide your running sandbox URL (e.g., http://0.0.0.0:8080)
+python3 special_judge/generate_judge_program.py \
+    --sandbox_url $SANDBOX_URL \
+    --api_key $API_KEY \
+    --base_url https://api.deepseek.com \
+    --model deepseek-chat \
+    --data_path data/require_special_judge.parquet \
+    --split train \
+    --text_field prompt \
+    --id_field problem_id \
+    --output_path data/special_judge_deepseek-chat.jsonl \
+    --run_timeout 30
+```
+
+Notes
+- The classifier and generator stream LLM outputs and include simple retry/backoff for rate limits/timeouts.
+- Generated judge programs follow the stdin/stdout/answer interface required by the sandbox’s special judge mode.
+
 
 ## 📚 Logging
 ### ⚠️ Error Programs Recording
