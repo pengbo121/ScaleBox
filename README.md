@@ -7,14 +7,14 @@
 ⚡ A scalable sandbox for distributed code execution, RL training and unified benchmarking | 🛡️ Distributed | 🌐 Multi-language | 🔥 Efficient
 
 ## 📋 Table of Contents
-- [✨ Highlights](#✨-highlights)
-- [🎯 Features](#🎯-features)
-- [🚀 Usage](#🚀-usage)
-- [✏️ Unified Evaluation](#✏️-unified-evaluation)
-- [🧪 Special Judge Generation](#🧪-special-judge-generation)
-- [📝 Citation](#📝-citation)
-- [🙏 Acknowledgement](#🙏-acknowledgement)
-- [📄 License](#📄-license)
+- [✨ Highlights](#-highlights)
+- [🎯 Features](#-features)
+- [🚀 Usage](#-usage)
+- [✏️ Unified Evaluation](#-unified-evaluation)
+- [🧪 Special Judge Generation](#-special-judge-generation)
+- [📝 Citation](#-citation)
+- [🙏 Acknowledgement](#-acknowledgement)
+- [📄 License](#-license)
 
 ## ✨ Highlights
 
