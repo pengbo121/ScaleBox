@@ -693,17 +693,19 @@ Quick start (requires an OpenAI-compatible model API and a running sandbox):
 ```bash
 cd special_judge
 
+# 0) Preprocess `PrimeIntellect/verifiable-coding-problems` dataset and filter out python problems with gold solutions
+python3 preprocess.py
+
 # 1) Classify problems for special-judge need
 python3 special_judge/classify.py \
     --api_key $API_KEY \
     --base_url https://api.deepseek.com \
     --model deepseek-chat \
-    --data_path PrimeIntellect/verifiable-coding-problems \
+    --data_path data/PrimeIntellect-verifiable-coding-problems-python.parquet \
     --split train \
     --text_field prompt \
-    --id_field problem_id \
     --output_path data/classified_deepseek-chat.jsonl \
-    --batch_size 16 --resume
+    --batch_size 16
 
 # 2) Filter and summarize the classification results
 python3 special_judge/filter_special_judge.py \
@@ -721,7 +723,6 @@ python3 special_judge/generate_judge_program.py \
     --data_path data/require_special_judge.parquet \
     --split train \
     --text_field prompt \
-    --id_field problem_id \
     --output_path data/special_judge_deepseek-chat.jsonl \
     --run_timeout 30
 ```
